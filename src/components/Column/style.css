@@ -1,5 +1,26 @@
 .column {
   display: inline-block;
-  margin: 10px;
-  width: 30%;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 4px #ccc;
+  /* height: 80vh; */
+  width: 100%;
+}
+
+.column__header {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Tabs */
+@media (min-width: 768px) {
+  .column {
+    display: inline-block;
+    /* margin: 10px; */
+    margin: 0px auto;
+  }
+
+  .column__header {
+    font-size: 16px;
+  }
 }

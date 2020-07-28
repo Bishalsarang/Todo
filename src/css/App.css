@@ -7,3 +7,8 @@ body {
   width: 90%;
   padding: 10px;
 }
+
+.inputbox {
+  border: 0;
+  outline: none;
+}

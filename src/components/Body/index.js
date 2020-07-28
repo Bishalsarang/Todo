@@ -6,9 +6,11 @@ export default class Body extends Component {
   render() {
     return (
       <>
-        <Column name="Scheduled" />
-        <Column name="In Progress" />
-        <Column name="Completed" />
+        <Column name="Scheduled" id="scheduled" />
+        {/* <Column name="In Progress" id="progress" />
+        <Column name="Completed" id="completed" /> */}
+
+        <input type="text" className="inputbox" placeholder="Add a task" />
       </>
     );
   }
