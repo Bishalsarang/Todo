@@ -9,8 +9,6 @@ export default class Body extends Component {
         <Column name="Scheduled" id="scheduled" />
         {/* <Column name="In Progress" id="progress" />
         <Column name="Completed" id="completed" /> */}
-
-        <input type="text" className="inputbox" placeholder="Add a task" />
       </>
     );
   }

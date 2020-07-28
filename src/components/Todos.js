@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
 
-export class Todos extends Component {
+export default class Todos extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    return this.props.todos.map(todo => {
-      <TodoItem key={todo.id} />;
-    });
+    return <TodoItem />;
   }
 }
-
-export default Todos;
