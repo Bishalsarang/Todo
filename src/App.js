@@ -28,12 +28,21 @@ class App extends React.Component {
       ],
     };
   }
+
+  addToDo = item => {
+    console.log('OMG called', item);
+    console.log(this);
+    this.setState({
+      todos: [...this.state.todos, item],
+    });
+  };
+
   render() {
     return (
       <div className="app container">
         <Header />
         <Body todos={this.state.todos} />
-        <Add />
+        <Add addToDo={this.addToDo} />
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 export default class Add extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       title: '',
     };
@@ -12,6 +13,13 @@ export default class Add extends Component {
     e.preventDefault();
 
     console.log(this.state.title);
+    this.props.addToDo({
+      id: 3,
+      title: this.state.title,
+      description: 'very difficult',
+      priority: 'low',
+    });
+
     this.setState({
       title: '',
     });
