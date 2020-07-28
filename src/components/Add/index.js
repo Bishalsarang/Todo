@@ -25,7 +25,7 @@ export default class Add extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} style={{ textAlign: 'center' }}>
         <input type="text" placeholder="Add Todo" value={this.state.title} onChange={this.addItem} />
         <input type="submit" value="submit" />
       </form>

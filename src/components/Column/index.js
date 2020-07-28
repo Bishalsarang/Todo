@@ -4,14 +4,17 @@ import Todos from '../Todos';
 import './style.css';
 
 export default class Column extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    {
-      return (
-        <div className="column" id={this.props.id}>
-          <h2 className="column__header">{this.props.name}</h2>
-          <Todos />
-        </div>
-      );
-    }
+    const { id, name, todos } = this.props;
+    return (
+      <div className="column" id={id}>
+        <h2 className="column__header">{name}</h2>
+        <Todos todos={todos} />
+      </div>
+    );
   }
 }
