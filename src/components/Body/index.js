@@ -5,13 +5,16 @@ import Column from '../Column';
 export default class Body extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   render() {
     return (
       <>
-        <Column name="Scheduled" id="scheduled" todos={this.props.todos} />
+        {this.props.todos.length ? (
+          <Column name="Scheduled" id="scheduled" todos={this.props.todos} />
+        ) : (
+          <p style={{ background: 'green', color: 'white', height: '20vh' }}>Hurray Nothing to do</p>
+        )}
         {/* <Column name="In Progress" id="progress" />
         <Column name="Completed" id="completed" /> */}
       </>
