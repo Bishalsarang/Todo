@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Add extends Component {
   constructor(props) {
@@ -13,10 +14,10 @@ export default class Add extends Component {
     e.preventDefault();
     if (this.state.title) {
       this.props.addToDo({
-        id: 3,
+        id: uuidv4(),
         title: this.state.title,
         description: 'very difficult',
-        completed: true,
+        completed: false,
         priority: 'low',
       });
     }
