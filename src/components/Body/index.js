@@ -11,7 +11,12 @@ export default class Body extends Component {
     return (
       <>
         {this.props.todos.length ? (
-          <Column name="Scheduled" id="scheduled" todos={this.props.todos} />
+          <Column
+            name="Scheduled"
+            id="scheduled"
+            todos={this.props.todos}
+            toggleCompleted={this.props.toggleCompleted}
+          />
         ) : (
           <p style={{ background: 'green', color: 'white', height: '20vh' }}>Hurray Nothing to do</p>
         )}

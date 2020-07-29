@@ -11,14 +11,15 @@ export default class Add extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
-    console.log(this.state.title);
-    this.props.addToDo({
-      id: 3,
-      title: this.state.title,
-      description: 'very difficult',
-      priority: 'low',
-    });
+    if (this.state.title) {
+      this.props.addToDo({
+        id: 3,
+        title: this.state.title,
+        description: 'very difficult',
+        completed: true,
+        priority: 'low',
+      });
+    }
 
     this.setState({
       title: '',

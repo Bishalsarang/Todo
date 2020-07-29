@@ -13,7 +13,7 @@ export default class Column extends Component {
     return (
       <div className="column" id={id}>
         <h2 className="column__header">{name}</h2>
-        <Todos todos={todos} />
+        <Todos todos={todos} toggleCompleted={this.props.toggleCompleted} />
       </div>
     );
   }

@@ -17,18 +17,24 @@ class App extends React.Component {
   }
 
   addToDo = item => {
-    console.log('OMG called', item);
-    console.log(this);
     this.setState({
       todos: [...this.state.todos, item],
     });
+  };
+
+  toggleCompleted = id => {
+    const selectedTodo = this.state.todos.filter(todo => {
+      return todo.id === id;
+    })[0];
+    console.log(selectedTodo);
+    selectedTodo.completed = !selectedTodo.completed;
   };
 
   render() {
     return (
       <div className="app container">
         <Header />
-        <Body todos={this.state.todos} />
+        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
         <Add addToDo={this.addToDo} />
       </div>
     );
