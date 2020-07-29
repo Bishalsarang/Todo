@@ -16,6 +16,7 @@ export default class Body extends Component {
             id="scheduled"
             todos={this.props.todos}
             toggleCompleted={this.props.toggleCompleted}
+            deleteToDo={this.props.deleteToDo}
           />
         ) : (
           <p style={{ background: 'green', color: 'white', height: '20vh' }}>Hurray Nothing to do</p>

@@ -23,6 +23,16 @@ class App extends React.Component {
     });
   };
 
+  deleteToDo = id => {
+    const remaining = this.state.todos.filter((todo, index) => {
+      return todo.id !== id;
+    });
+
+    this.setState({
+      todos: remaining,
+    });
+  };
+
   toggleCompleted = id => {
     const selectedTodo = this.state.todos.filter(todo => {
       return todo.id === id;
@@ -36,7 +46,7 @@ class App extends React.Component {
       <div className="app container">
         <Header />
         <Add addToDo={this.addToDo} />
-        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
+        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteToDo={this.deleteToDo} />
       </div>
     );
   }

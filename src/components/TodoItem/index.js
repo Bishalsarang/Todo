@@ -40,6 +40,11 @@ export default class TodoItem extends Component {
     });
   };
 
+  onDelete = e => {
+    this.props.deleteToDo(this.props.todo.id);
+    console.log('Dlete');
+  };
+
   render() {
     console.log(this.state);
     const { title } = this.props.todo;
@@ -55,7 +60,7 @@ export default class TodoItem extends Component {
           <button>
             <FontAwesomeIcon icon={faEdit} />
           </button>
-          <button>
+          <button onClick={this.onDelete}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </div>
