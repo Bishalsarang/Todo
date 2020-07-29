@@ -5,6 +5,7 @@ import Add from './components/Add';
 import Body from './components/Body';
 import Modal from './components/Modal';
 import Header from './components/Header';
+import BottomNav from './components/BottomNav';
 
 // Import Global Styles
 import './css/App.css';
@@ -49,6 +50,7 @@ class App extends React.Component {
         <Modal />
         <Add addToDo={this.addToDo} />
         <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteToDo={this.deleteToDo} />
+        <BottomNav />
       </div>
     );
   }
