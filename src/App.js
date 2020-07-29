@@ -17,8 +17,9 @@ class App extends React.Component {
   }
 
   addToDo = item => {
+    // Add Recent Items at top
     this.setState({
-      todos: [...this.state.todos, item],
+      todos: [item, ...this.state.todos],
     });
   };
 
@@ -34,8 +35,8 @@ class App extends React.Component {
     return (
       <div className="app container">
         <Header />
-        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
         <Add addToDo={this.addToDo} />
+        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
       </div>
     );
   }

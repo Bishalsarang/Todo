@@ -1,0 +1,14 @@
+.info {
+  float: left;
+}
+
+.controls {
+  float: right;
+}
+
+button {
+  border: 0;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
