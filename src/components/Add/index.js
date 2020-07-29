@@ -36,8 +36,15 @@ export default class Add extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit} style={{ textAlign: 'center' }}>
-        <input type="text" placeholder="Add Todo" value={this.state.title} onChange={this.addItem} />
-        <input type="submit" value="submit" />
+        <input
+          type="text"
+          placeholder="Add Todo"
+          className="neumo-element"
+          style={{ padding: '6px' }}
+          value={this.state.title}
+          onChange={this.addItem}
+        />
+        <input className="neumo-element" type="submit" value="submit" />
       </form>
     );
   }

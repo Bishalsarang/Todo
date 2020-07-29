@@ -3,6 +3,7 @@ import React from 'react';
 // Import Components
 import Add from './components/Add';
 import Body from './components/Body';
+import Modal from './components/Modal';
 import Header from './components/Header';
 
 // Import Global Styles
@@ -19,7 +20,7 @@ class App extends React.Component {
   addToDo = item => {
     // Add Recent Items at top
     this.setState({
-      todos: [item, ...this.state.todos],
+      todos: [...this.state.todos, item],
     });
   };
 
@@ -37,14 +38,15 @@ class App extends React.Component {
     const selectedTodo = this.state.todos.filter(todo => {
       return todo.id === id;
     })[0];
-    console.log(selectedTodo);
+
     selectedTodo.completed = !selectedTodo.completed;
   };
 
   render() {
     return (
-      <div className="app container">
+      <div className="app">
         <Header />
+        <Modal />
         <Add addToDo={this.addToDo} />
         <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteToDo={this.deleteToDo} />
       </div>

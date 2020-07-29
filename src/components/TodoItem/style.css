@@ -1,8 +1,10 @@
 .info {
   float: left;
+  padding-left: 16px;
 }
 
 .controls {
+  padding: 12px 16px 0px 12px;
   float: right;
 }
 

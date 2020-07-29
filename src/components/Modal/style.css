@@ -1,0 +1,14 @@
+.show-shape-info {
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 18%;
+  width: 15%;
+  height: 200px;
+  text-align: center;
+  color: gray;
+  background-color: antiquewhite;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}

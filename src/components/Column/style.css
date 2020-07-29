@@ -1,8 +1,5 @@
 .column {
   display: inline-block;
-  background: #fff;
-  border: 1px solid #eee;
-  box-shadow: 0 4px 4px #ccc;
   /* height: 80vh; */
   width: 100%;
 }

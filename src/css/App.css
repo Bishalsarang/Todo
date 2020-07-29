@@ -1,5 +1,5 @@
 body {
-  background: #eff1ed;
+  background: #f0f0f3;
 }
 
 .container {
@@ -20,4 +20,18 @@ body {
   content: ' ';
   clear: both;
   height: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.neumo-element {
+  box-shadow: -7px 7px 14px #cccccf, 7px -7px 14px #ffffff;
+  border-radius: 12px;
+}
+
+input {
+  outline: none;
+  border: 0;
 }
