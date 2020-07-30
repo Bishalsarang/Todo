@@ -22,7 +22,7 @@ class App extends React.Component {
   addToDo = item => {
     // Add Recent Items at top
     this.setState({
-      todos: [...this.state.todos, item],
+      todos: [item, ...this.state.todos],
     });
   };
 
