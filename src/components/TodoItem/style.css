@@ -28,6 +28,20 @@
   color: blue;
 }
 
+.check {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  color: red;
+  cursor: pointer;
+  background: linear-gradient(225deg, #d8d8db, #ffffff);
+  box-shadow: -8px 8px 16px #bbbbbe, 8px -8px 16px #ffffff;
+}
+
 button {
   border: 0;
   outline: none;

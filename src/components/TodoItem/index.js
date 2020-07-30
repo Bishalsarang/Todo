@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './style.css';
 
@@ -29,6 +29,7 @@ export default class TodoItem extends Component {
 
   onCheckBoxChanged = e => {
     // Change State of Parent
+    console.log('here');
     this.props.toggleCompleted(this.props.todo.id);
     this.setState({
       completed: !this.state.completed,
@@ -48,7 +49,13 @@ export default class TodoItem extends Component {
         style={this.props.todo.completed ? { ...taskWrapperStyle, background: '#dddde4' } : taskWrapperStyle}
       >
         <div className="info">
-          <input type="checkbox" onChange={this.onCheckBoxChanged} />
+          {/* <input type="checkbox" onChange={this.onCheckBoxChanged} /> */}
+          <div className="check" onClick={this.onCheckBoxChanged}>
+            <div className={this.props.todo.completed ? 'check__icon' : 'check__icon hide'}>
+              <FontAwesomeIcon icon={faCheck} />
+            </div>
+          </div>
+
           <p style={this.props.todo.completed ? { ...titleStyle, ...completedStyle } : { ...titleStyle }}>{title} </p>
         </div>
 

@@ -4,16 +4,31 @@ import Todos from '../Todos';
 import './style.css';
 
 export default class Column extends Component {
-  constructor(props) {
-    super(props);
-  }
+  filteredTodos = () => {
+    if (this.props.displayType === 'completed') {
+      return this.props.todos.filter(todo => {
+        return todo.completed;
+      });
+    }
+
+    if (this.props.displayType === 'remaining') {
+      return this.props.todos.filter(todo => {
+        return !todo.completed;
+      });
+    }
+    return this.props.todos;
+  };
 
   render() {
-    const { id, name, todos } = this.props;
+    const { displayType } = this.props;
     return (
-      <div className="column" id={id}>
-        <h2 className="column__header">{name}</h2>
-        <Todos todos={todos} toggleCompleted={this.props.toggleCompleted} deleteToDo={this.props.deleteToDo} />
+      <div className="column" id={displayType}>
+        <h2 className="column__header">{displayType.toUpperCase()} TASKS</h2>
+        <Todos
+          todos={this.filteredTodos()}
+          toggleCompleted={this.props.toggleCompleted}
+          deleteToDo={this.props.deleteToDo}
+        />
       </div>
     );
   }

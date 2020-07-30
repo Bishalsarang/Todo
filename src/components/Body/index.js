@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import Column from '../Column';
 
 const emptyStyle = {
@@ -9,10 +7,6 @@ const emptyStyle = {
 };
 
 export default class Body extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="container">
@@ -22,19 +16,16 @@ export default class Body extends Component {
 
         {this.props.todos.length ? (
           <Column
-            name="Scheduled"
-            id="scheduled"
             todos={this.props.todos}
             toggleCompleted={this.props.toggleCompleted}
             deleteToDo={this.props.deleteToDo}
+            displayType={this.props.displayType}
           />
         ) : (
           <p style={emptyStyle} className="neumo-element">
             Hurray Nothing to do
           </p>
         )}
-        {/* <Column name="In Progress" id="progress" />
-        <Column name="Completed" id="completed" /> */}
       </div>
     );
   }

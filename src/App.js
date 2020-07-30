@@ -14,29 +14,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [
-        {
-          id: 123,
-          title: 'Task 1',
-          description: 'very difficult',
-          completed: false,
-          priority: 'low',
-        },
-        {
-          id: 124,
-          title: 'Task 2',
-          description: 'very difficult',
-          completed: false,
-          priority: 'med',
-        },
-        {
-          id: 125,
-          title: 'Task 3',
-          description: 'very difficult',
-          completed: false,
-          priority: 'high',
-        },
-      ],
+      todos: [],
+      displayType: 'all',
     };
   }
 
@@ -65,14 +44,28 @@ class App extends React.Component {
     selectedTodo.completed = !selectedTodo.completed;
   };
 
+  handleDisplayType = newDisplayType => {
+    this.setState(
+      {
+        displayType: newDisplayType,
+      },
+      () => console.log(newDisplayType)
+    );
+  };
+
   render() {
     return (
       <div className="app">
         <Header />
         <Modal />
         <Add addToDo={this.addToDo} />
-        <Body todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteToDo={this.deleteToDo} />
-        <BottomNav />
+        <Body
+          todos={this.state.todos}
+          displayType={this.state.displayType}
+          toggleCompleted={this.toggleCompleted}
+          deleteToDo={this.deleteToDo}
+        />
+        <BottomNav todos={this.state.todos} handleDisplayType={this.handleDisplayType} />
       </div>
     );
   }
