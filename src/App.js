@@ -37,11 +37,30 @@ class App extends React.Component {
   };
 
   toggleCompleted = id => {
-    const selectedTodo = this.state.todos.filter(todo => {
-      return todo.id === id;
-    })[0];
-
-    selectedTodo.completed = !selectedTodo.completed;
+    let newToDos = [...this.state.todos];
+    for (let i = 0; i < newToDos.length; i++) {
+      if (newToDos[i].id === id) {
+        console.log('done');
+        newToDos[i].completed = !newToDos[i].completed;
+      }
+    }
+    console.log(this.state.todos, newToDos);
+    this.setState({
+      todos: newToDos,
+    });
+    // console.log('TOggling');
+    // let updatedToDo = this.state.todos.map(todo => {
+    //   if (todo.id === id) {
+    //     todo.completed = !todo.completed;
+    //   }
+    // });
+    // console.log('Here', this.state.todos);
+    // this.setState(
+    //   {
+    //     todos: updatedToDo,
+    //   },
+    //   () => console.log('Here', this.state.todos)
+    // );
   };
 
   handleDisplayType = newDisplayType => {
@@ -54,6 +73,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log('Rerendering Parent');
     return (
       <div className="app">
         <Header />

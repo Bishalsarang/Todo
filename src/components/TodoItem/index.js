@@ -29,7 +29,6 @@ export default class TodoItem extends Component {
 
   onCheckBoxChanged = e => {
     // Change State of Parent
-    console.log('here');
     this.props.toggleCompleted(this.props.todo.id);
     this.setState({
       completed: !this.state.completed,
