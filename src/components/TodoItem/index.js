@@ -44,7 +44,7 @@ export default class TodoItem extends Component {
 
     return (
       <div
-        className="task-wrapper neumo-element clearfix"
+        className="task-wrapper neumo-element "
         style={this.props.todo.completed ? { ...taskWrapperStyle, background: '#dddde4' } : taskWrapperStyle}
       >
         <div className="info">
@@ -53,6 +53,7 @@ export default class TodoItem extends Component {
         </div>
 
         <div className="controls">
+          <div className={'priority neumo-element ' + this.props.todo.priority}>{this.props.todo.priority}</div>
           <button>
             <FontAwesomeIcon icon={faEdit} />
           </button>

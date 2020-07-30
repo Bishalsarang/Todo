@@ -14,7 +14,29 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [],
+      todos: [
+        {
+          id: 123,
+          title: 'Task 1',
+          description: 'very difficult',
+          completed: false,
+          priority: 'low',
+        },
+        {
+          id: 124,
+          title: 'Task 2',
+          description: 'very difficult',
+          completed: false,
+          priority: 'med',
+        },
+        {
+          id: 125,
+          title: 'Task 3',
+          description: 'very difficult',
+          completed: false,
+          priority: 'high',
+        },
+      ],
     };
   }
 
