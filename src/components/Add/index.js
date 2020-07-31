@@ -17,7 +17,7 @@ export default class Add extends Component {
         id: uuidv4(),
         title: this.state.title,
         description: 'very difficult',
-        completed: false,
+        isComplete: false,
         priority: 'low',
       });
     }
@@ -35,7 +35,11 @@ export default class Add extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} style={{ textAlign: 'center' }} className="container">
+      <form
+        onSubmit={this.onSubmit}
+        style={{ textAlign: 'center' }}
+        className="container"
+      >
         <input
           type="text"
           placeholder="Add Todo"

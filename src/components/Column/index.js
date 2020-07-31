@@ -6,16 +6,13 @@ import './style.css';
 export default class Column extends Component {
   filteredTodos = () => {
     if (this.props.displayType === 'completed') {
-      return this.props.todos.filter(todo => {
-        return todo.completed;
-      });
+      return this.props.todos.filter(todo => todo.isComplete);
     }
 
     if (this.props.displayType === 'remaining') {
-      return this.props.todos.filter(todo => {
-        return !todo.completed;
-      });
+      return this.props.todos.filter(todo => !todo.isComplete);
     }
+
     return this.props.todos;
   };
 

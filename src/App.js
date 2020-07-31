@@ -53,7 +53,7 @@ class App extends React.Component {
    */
   toggleCompleted = id => {
     let newToDos = this.state.todos.map(todo => {
-      todo.completed = todo.id === id ? !todo.completed : todo.completed;
+      todo.isComplete = todo.id === id ? !todo.isComplete : todo.isComplete;
       return todo;
     });
 
@@ -103,7 +103,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header title="Yet Another Todo" />
         <Add addToDo={this.addToDo} />
         <Body
           todos={this.state.todos}

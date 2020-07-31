@@ -23,7 +23,7 @@ export default class TodoItem extends Component {
     super(props);
 
     this.state = {
-      completed: this.props.todo.completed,
+      isComplete: this.props.todo.isComplete,
     };
   }
 
@@ -31,7 +31,7 @@ export default class TodoItem extends Component {
     // Change State of Parent
     this.props.toggleCompleted(this.props.todo.id);
     this.setState({
-      completed: !this.state.completed,
+      isComplete: !this.state.isComplete,
     });
   };
 
@@ -50,7 +50,7 @@ export default class TodoItem extends Component {
       <div
         className="task-wrapper neumo-element "
         style={
-          this.props.todo.completed
+          this.props.todo.isComplete
             ? { ...taskWrapperStyle, background: '#dddde4' }
             : taskWrapperStyle
         }
@@ -59,7 +59,7 @@ export default class TodoItem extends Component {
           <div className="check" onClick={this.onCheckBoxChanged}>
             <div
               className={
-                this.props.todo.completed ? 'check__icon' : 'check__icon hide'
+                this.props.todo.isComplete ? 'check__icon' : 'check__icon hide'
               }
             >
               <FontAwesomeIcon icon={faCheck} />
@@ -68,7 +68,7 @@ export default class TodoItem extends Component {
 
           <p
             style={
-              this.props.todo.completed
+              this.props.todo.isComplete
                 ? { ...titleStyle, ...completedStyle }
                 : { ...titleStyle }
             }
