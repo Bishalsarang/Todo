@@ -16,7 +16,7 @@ export default class Add extends Component {
       this.props.addToDo({
         id: uuidv4(),
         title: this.state.title,
-        description: 'very difficult',
+        description: 'This is a description',
         isComplete: false,
         priority: 'low',
       });

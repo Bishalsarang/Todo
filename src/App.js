@@ -3,9 +3,10 @@ import React from 'react';
 // Import Components
 import Add from './components/Add';
 import Body from './components/Body';
+import Column from './components/Column';
+import Search from './components/Search';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
-import Column from './components/Column';
 
 // Import Global Styles
 import './css/App.css';
@@ -16,11 +17,25 @@ class App extends React.Component {
 
     this.state = JSON.parse(localStorage.getItem('todo')) || {
       todos: [],
+      filteredToDos: [],
       visibility: 'all',
     };
 
     this.priorities = ['low', 'med', 'high']; // Available Task Priorities
   }
+
+  searchToDo = (searchText = '') => {
+    const filteredToDos = this.state.todos.filter(todo => {
+      console.log(todo.title, searchText);
+      console.log(todo.title.toLowerCase().includes(searchText.toLowerCase()));
+      return todo.title.toLowerCase().includes(searchText.toLowerCase());
+      // ); todo.title.toLowerCase().includes(searchText.toLowerCase());
+    });
+
+    this.setState({
+      filteredToDos: filteredToDos,
+    });
+  };
 
   /**
    * Add TodoItem to Todos
@@ -31,6 +46,7 @@ class App extends React.Component {
     // Add Recent Items at top
     this.setState({
       todos: [item, ...this.state.todos],
+      filteredToDos: [item, ...this.state.todos],
     });
   };
 
@@ -45,6 +61,7 @@ class App extends React.Component {
 
     this.setState({
       todos: remaining,
+      filteredToDos: remaining,
     });
   };
 
@@ -106,11 +123,12 @@ class App extends React.Component {
       <div className="app">
         <Header title="Yet Another Todo" />
         <Body>
+          <Search searchToDo={this.searchToDo} />
           <Add addToDo={this.addToDo} />
 
           {this.state.todos.length ? (
             <Column
-              todos={this.state.todos}
+              todos={this.state.filteredToDos}
               toggleCompleted={this.toggleCompleted}
               deleteToDo={this.deleteToDo}
               changePriority={this.changePriority}
@@ -122,7 +140,7 @@ class App extends React.Component {
         </Body>
 
         <BottomNav
-          todos={this.state.todos}
+          todos={this.state.filteredToDos}
           handleDisplayType={this.handleVisibility}
         />
       </div>
