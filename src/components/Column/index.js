@@ -28,6 +28,7 @@ export default class Column extends Component {
           todos={this.filteredTodos()}
           toggleCompleted={this.props.toggleCompleted}
           deleteToDo={this.props.deleteToDo}
+          changePriority={this.props.changePriority}
         />
       </div>
     );

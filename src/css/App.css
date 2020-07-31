@@ -6,6 +6,7 @@ body {
   margin: 0px auto;
   width: 90%;
   padding: 10px;
+  max-width: 1366px;
 }
 
 .inputbox {
@@ -31,6 +32,11 @@ body {
   border-radius: 12px;
 }
 
+.neumo-element:hover {
+  background: linear-gradient(45deg, #ffffff, #d8d8db);
+  box-shadow: 10px -10px 20px #929294, -10px 10px 20px #ffffff;
+}
+
 input {
   outline: none;
   border: 0;
@@ -38,6 +44,6 @@ input {
 
 @media (min-width: 768px) {
   .container {
-    width: 50%;
+    width: 40%;
   }
 }

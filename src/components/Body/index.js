@@ -10,15 +10,12 @@ export default class Body extends Component {
   render() {
     return (
       <div className="container">
-        {/* <button>
-          <FontAwesomeIcon icon={faPlusCircle} size="3x" />
-        </button> */}
-
         {this.props.todos.length ? (
           <Column
             todos={this.props.todos}
             toggleCompleted={this.props.toggleCompleted}
             deleteToDo={this.props.deleteToDo}
+            changePriority={this.props.changePriority}
             displayType={this.props.displayType}
           />
         ) : (

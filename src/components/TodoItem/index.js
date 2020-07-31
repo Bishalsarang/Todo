@@ -39,30 +39,56 @@ export default class TodoItem extends Component {
     this.props.deleteToDo(this.props.todo.id);
   };
 
+  handlePriority = () => {
+    this.props.changePriority(this.props.todo.id);
+  };
+
   render() {
     const { title } = this.props.todo;
 
     return (
       <div
         className="task-wrapper neumo-element "
-        style={this.props.todo.completed ? { ...taskWrapperStyle, background: '#dddde4' } : taskWrapperStyle}
+        style={
+          this.props.todo.completed
+            ? { ...taskWrapperStyle, background: '#dddde4' }
+            : taskWrapperStyle
+        }
       >
         <div className="info">
-          {/* <input type="checkbox" onChange={this.onCheckBoxChanged} /> */}
           <div className="check" onClick={this.onCheckBoxChanged}>
-            <div className={this.props.todo.completed ? 'check__icon' : 'check__icon hide'}>
+            <div
+              className={
+                this.props.todo.completed ? 'check__icon' : 'check__icon hide'
+              }
+            >
               <FontAwesomeIcon icon={faCheck} />
             </div>
           </div>
 
-          <p style={this.props.todo.completed ? { ...titleStyle, ...completedStyle } : { ...titleStyle }}>{title} </p>
+          <p
+            style={
+              this.props.todo.completed
+                ? { ...titleStyle, ...completedStyle }
+                : { ...titleStyle }
+            }
+          >
+            {title}{' '}
+          </p>
         </div>
 
         <div className="controls">
-          <div className={'priority neumo-element ' + this.props.todo.priority}>{this.props.todo.priority}</div>
+          <div
+            className={`priority neumo-element ${this.props.todo.priority}`}
+            onClick={this.handlePriority}
+            style={{ cursor: 'pointer' }}
+          >
+            {this.props.todo.priority}
+          </div>
           <button>
             <FontAwesomeIcon icon={faEdit} />
           </button>
+
           <button onClick={this.onDelete}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>

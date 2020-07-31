@@ -13,10 +13,13 @@ import './css/App.css';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
+
+    this.state = JSON.parse(localStorage.getItem('todo')) || {
       todos: [],
       displayType: 'all',
     };
+
+    this.priorities = ['low', 'med', 'high'];
   }
 
   addToDo = item => {
@@ -27,7 +30,7 @@ class App extends React.Component {
   };
 
   deleteToDo = id => {
-    const remaining = this.state.todos.filter((todo, index) => {
+    const remaining = this.state.todos.filter(todo => {
       return todo.id !== id;
     });
 
@@ -37,43 +40,41 @@ class App extends React.Component {
   };
 
   toggleCompleted = id => {
-    let newToDos = [...this.state.todos];
-    for (let i = 0; i < newToDos.length; i++) {
-      if (newToDos[i].id === id) {
-        console.log('done');
-        newToDos[i].completed = !newToDos[i].completed;
-      }
-    }
-    console.log(this.state.todos, newToDos);
+    let newToDos = this.state.todos.map(todo => {
+      todo.completed = todo.id === id ? !todo.completed : todo.completed;
+      return todo;
+    });
+
     this.setState({
       todos: newToDos,
     });
-    // console.log('TOggling');
-    // let updatedToDo = this.state.todos.map(todo => {
-    //   if (todo.id === id) {
-    //     todo.completed = !todo.completed;
-    //   }
-    // });
-    // console.log('Here', this.state.todos);
-    // this.setState(
-    //   {
-    //     todos: updatedToDo,
-    //   },
-    //   () => console.log('Here', this.state.todos)
-    // );
   };
 
   handleDisplayType = newDisplayType => {
-    this.setState(
-      {
-        displayType: newDisplayType,
-      },
-      () => console.log(newDisplayType)
-    );
+    this.setState({
+      displayType: newDisplayType,
+    });
   };
 
+  changePriority = id => {
+    let newToDos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        let newIndex = (this.priorities.indexOf(todo.priority) + 1) % 3;
+        todo.priority = this.priorities[newIndex];
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: newToDos,
+    });
+  };
+
+  componentDidUpdate() {
+    localStorage.setItem('todo', JSON.stringify(this.state)); // Save STate to LOcal STorage
+  }
+
   render() {
-    console.log('Rerendering Parent');
     return (
       <div className="app">
         <Header />
@@ -84,8 +85,12 @@ class App extends React.Component {
           displayType={this.state.displayType}
           toggleCompleted={this.toggleCompleted}
           deleteToDo={this.deleteToDo}
+          changePriority={this.changePriority}
         />
-        <BottomNav todos={this.state.todos} handleDisplayType={this.handleDisplayType} />
+        <BottomNav
+          todos={this.state.todos}
+          handleDisplayType={this.handleDisplayType}
+        />
       </div>
     );
   }
