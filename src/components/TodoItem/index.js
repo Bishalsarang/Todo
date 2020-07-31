@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './style.css';
-
-let taskWrapperStyle = {
-  margin: '0px auto',
-  marginBottom: '10px',
-  padding: '10px 0px',
-};
-
-const titleStyle = {
-  display: 'inline-block',
-};
-
-const completedStyle = {
-  textDecoration: 'line-through',
-};
 
 export default class TodoItem extends Component {
   constructor(props) {
@@ -29,11 +16,9 @@ export default class TodoItem extends Component {
 
   onCheckBoxChanged = e => {
     this.props.toggleCompleted(this.props.todo.id);
-    this.setState(
-      {
-        isComplete: !this.state.isComplete,
-      } // Change State of Parent
-    );
+    this.setState({
+      isComplete: !this.state.isComplete,
+    });
   };
 
   onDelete = () => {
@@ -45,46 +30,31 @@ export default class TodoItem extends Component {
   };
 
   render() {
-    const { title } = this.props.todo;
+    const { isComplete } = this.state;
+    const { title, priority } = this.props.todo;
 
     return (
       <div
-        className="task-wrapper neumo-element "
-        style={
-          this.state.isComplete
-            ? { ...taskWrapperStyle, background: '#dddde4' }
-            : taskWrapperStyle
-        }
+        className={'task neumo-element ' + (isComplete ? 'task--complete' : '')}
       >
         <div className="info">
           <div className="check" onClick={this.onCheckBoxChanged}>
-            <div
-              className={
-                this.state.isComplete ? 'check__icon' : 'check__icon hide'
-              }
-            >
+            <div className={'check__icon ' + (isComplete ? '' : 'hide')}>
               <FontAwesomeIcon icon={faCheck} />
             </div>
           </div>
 
-          <p
-            style={
-              this.state.isComplete
-                ? { ...titleStyle, ...completedStyle }
-                : { ...titleStyle }
-            }
-          >
-            {title}{' '}
+          <p className={'task__title ' + (isComplete ? 'task--complete' : '')}>
+            {title}
           </p>
         </div>
 
-        <div className="controls">
+        <div className="task__controls">
           <div
-            className={`priority neumo-element ${this.props.todo.priority}`}
+            className={`task__priority neumo-element ${priority}`}
             onClick={this.handlePriority}
-            style={{ cursor: 'pointer' }}
           >
-            {this.props.todo.priority}
+            {priority}
           </div>
           <button>
             <FontAwesomeIcon icon={faEdit} />

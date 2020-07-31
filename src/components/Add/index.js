@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
 import { v4 as uuidv4 } from 'uuid';
 
-export default class Add extends Component {
+import './style.css';
+
+class Add extends Component {
   constructor(props) {
     super(props);
 
@@ -12,13 +15,14 @@ export default class Add extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+
     if (this.state.title) {
       this.props.addToDo({
         id: uuidv4(),
+        priority: 'low',
+        isComplete: false,
         title: this.state.title,
         description: 'This is a description',
-        isComplete: false,
-        priority: 'low',
       });
     }
 
@@ -35,21 +39,18 @@ export default class Add extends Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.onSubmit}
-        style={{ textAlign: 'center' }}
-        className="container"
-      >
+      <form onSubmit={this.onSubmit} className="add-form">
         <input
           type="text"
           placeholder="Add Todo"
-          className="neumo-element"
-          style={{ padding: '6px', width: '100%', textAlign: 'center' }}
-          value={this.state.title}
           onChange={this.addItem}
+          value={this.state.title}
+          className="add-form__input neumo-element"
         />
         <input className="neumo-element hide" type="submit" value="submit" />
       </form>
     );
   }
 }
+
+export default Add;

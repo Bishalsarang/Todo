@@ -69,12 +69,13 @@ class App extends React.Component {
   toggleCompleted = id => {
     let newToDos = this.state.todos.map(todo => {
       todo.isComplete = todo.id === id ? !todo.isComplete : todo.isComplete;
+
       return todo;
     });
 
     this.setState({
-      filteredToDos: newToDos,
       todos: newToDos,
+      filteredToDos: newToDos,
     });
   };
 
@@ -140,11 +141,11 @@ class App extends React.Component {
 
           {this.state.todos.length ? (
             <Column
-              todos={this.state.filteredToDos}
-              toggleCompleted={this.toggleCompleted}
               deleteToDo={this.deleteToDo}
-              changePriority={this.changePriority}
+              todos={this.state.filteredToDos}
               displayType={this.state.visibility}
+              changePriority={this.changePriority}
+              toggleCompleted={this.toggleCompleted}
             />
           ) : (
             <p className="column--empty neumo-element">Hurray Nothing to do</p>

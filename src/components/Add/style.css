@@ -1,0 +1,9 @@
+.add-form {
+  text-align: center;
+}
+
+.add-form__input {
+  padding: 6px;
+  width: 100%;
+  text-align: center;
+}

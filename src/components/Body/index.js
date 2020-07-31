@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Body extends Component {
-  render() {
-    return <div className="container">{this.props.children}</div>;
-  }
-}
+const Body = props => {
+  return <div className="container">{props.children}</div>;
+};
+
+export default Body;

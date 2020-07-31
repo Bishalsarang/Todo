@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   faClipboardList,
   faCheckSquare,
@@ -21,26 +22,26 @@ export default class BottomNav extends Component {
           <div>
             <BottomNavButton
               visibility="all"
-              handleClick={this.handleClick}
               icon={faClipboardList}
+              handleClick={this.handleClick}
             />
             <span>All</span>
           </div>
 
           <div>
             <BottomNavButton
+              icon={faCheckSquare}
               visibility="completed"
               handleClick={this.handleClick}
-              icon={faCheckSquare}
             />
             <span>Completed</span>
           </div>
 
           <div>
             <BottomNavButton
+              icon={faTimes}
               visibility="remaining"
               handleClick={this.handleClick}
-              icon={faTimes}
             />
             <span>Remaining</span>
           </div>

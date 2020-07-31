@@ -1,19 +1,33 @@
-.task-wrapper {
+.task {
+  margin: 0px auto;
+  margin-bottom: 10px;
+  padding: 10px 0px;
   display: flex;
   justify-content: space-between;
 }
+
+.task--complete {
+  text-decoration: line-through;
+  background: #dddde4 !important;
+}
+
+.task__title {
+  display: inline-block;
+}
+
 .info {
   padding-left: 16px;
 }
 
-.controls {
+.task__controls {
   padding: 12px 16px 0px 12px;
 }
 
-.priority {
+.task__priority {
   display: inline-block;
   padding: 0px 6px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .high {

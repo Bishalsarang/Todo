@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './style.css';
+
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -22,12 +24,13 @@ export default class Search extends Component {
 
   render() {
     return (
-      <form className="container" onSubmit={this.onSubmit}>
+      <form className="search-form" onSubmit={this.onSubmit}>
         <input
           type="text"
-          value={this.state.search}
           placeholder="Search"
+          value={this.state.search}
           onChange={this.setSearch}
+          className="search-form__input"
         />
       </form>
     );
