@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClipboardList,
   faCheckSquare,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
+import BottomNavButton from '../BottomNavButton';
+
 import './style.css';
 
 export default class BottomNav extends Component {
-  handleClick = displayType => {
-    this.props.handleDisplayType(displayType);
+  handleClick = visibility => {
+    this.props.handleDisplayType(visibility);
   };
 
   render() {
@@ -18,31 +19,29 @@ export default class BottomNav extends Component {
       <div className="bottom-nav">
         <div className="bottom-nav__wrapper container">
           <div>
-            <button
-              className="bottom-nav__button neumo-element"
-              onClick={() => this.handleClick('all')}
-            >
-              <FontAwesomeIcon icon={faClipboardList} size="2x" />
-            </button>
+            <BottomNavButton
+              visibility="all"
+              handleClick={this.handleClick}
+              icon={faClipboardList}
+            />
             <span>All</span>
           </div>
+
           <div>
-            <button
-              className="bottom-nav__button neumo-element"
-              onClick={() => this.handleClick('completed')}
-            >
-              <FontAwesomeIcon icon={faCheckSquare} size="2x" />
-            </button>
+            <BottomNavButton
+              visibility="completed"
+              handleClick={this.handleClick}
+              icon={faCheckSquare}
+            />
             <span>Completed</span>
           </div>
 
           <div>
-            <button
-              className="bottom-nav__button neumo-element"
-              onClick={() => this.handleClick('remaining')}
-            >
-              <FontAwesomeIcon icon={faTimes} size="2x" />
-            </button>
+            <BottomNavButton
+              visibility="remaining"
+              handleClick={this.handleClick}
+              icon={faTimes}
+            />
             <span>Remaining</span>
           </div>
         </div>
