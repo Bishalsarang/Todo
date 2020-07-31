@@ -114,11 +114,13 @@ class App extends React.Component {
    */
   componentDidMount() {
     const savedState = JSON.parse(localStorage.getItem('todo'));
-    this.setState({
-      ...savedState,
-      visibility: 'all',
-      filteredToDos: savedState.todos,
-    });
+    if (savedState) {
+      this.setState({
+        ...savedState,
+        visibility: 'all',
+        filteredToDos: savedState.todos,
+      });
+    }
   }
 
   /**
