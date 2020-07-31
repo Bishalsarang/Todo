@@ -9,6 +9,11 @@
   font-size: 12px;
 }
 
+.column--empty {
+  height: 20vh;
+  text-align: center;
+}
+
 /* Tabs */
 @media (min-width: 768px) {
   .column {

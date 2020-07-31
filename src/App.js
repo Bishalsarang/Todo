@@ -5,6 +5,7 @@ import Add from './components/Add';
 import Body from './components/Body';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
+import Column from './components/Column';
 
 // Import Global Styles
 import './css/App.css';
@@ -104,14 +105,22 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header title="Yet Another Todo" />
-        <Add addToDo={this.addToDo} />
-        <Body
-          todos={this.state.todos}
-          displayType={this.state.visibility}
-          toggleCompleted={this.toggleCompleted}
-          deleteToDo={this.deleteToDo}
-          changePriority={this.changePriority}
-        />
+        <Body>
+          <Add addToDo={this.addToDo} />
+
+          {this.state.todos.length ? (
+            <Column
+              todos={this.state.todos}
+              toggleCompleted={this.toggleCompleted}
+              deleteToDo={this.deleteToDo}
+              changePriority={this.changePriority}
+              displayType={this.state.visibility}
+            />
+          ) : (
+            <p className="column--empty neumo-element">Hurray Nothing to do</p>
+          )}
+        </Body>
+
         <BottomNav
           todos={this.state.todos}
           handleDisplayType={this.handleVisibility}
