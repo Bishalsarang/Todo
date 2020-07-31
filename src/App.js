@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = JSON.parse(localStorage.getItem('todo')) || {
+    this.state = {
       todos: [],
       filteredToDos: [],
       visibility: 'all',
@@ -26,10 +26,7 @@ class App extends React.Component {
 
   searchToDo = (searchText = '') => {
     const filteredToDos = this.state.todos.filter(todo => {
-      console.log(todo.title, searchText);
-      console.log(todo.title.toLowerCase().includes(searchText.toLowerCase()));
       return todo.title.toLowerCase().includes(searchText.toLowerCase());
-      // ); todo.title.toLowerCase().includes(searchText.toLowerCase());
     });
 
     this.setState({
@@ -76,6 +73,7 @@ class App extends React.Component {
     });
 
     this.setState({
+      filteredToDos: newToDos,
       todos: newToDos,
     });
   };
@@ -110,6 +108,18 @@ class App extends React.Component {
       todos: newToDos,
     });
   };
+
+  /**
+   * Load from Local storage if any
+   */
+  componentDidMount() {
+    const savedState = JSON.parse(localStorage.getItem('todo'));
+    this.setState({
+      ...savedState,
+      visibility: 'all',
+      filteredToDos: savedState.todos,
+    });
+  }
 
   /**
    * Save current progress to local storage
